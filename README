@@ -1,7 +1,12 @@
 CloudFlare dynamic DNS and LetsEncrypt certificate Updater
 
-This docker will
 
+chaosmagnetx/cloudflare-dynamic-certbot
+https://github.com/Chaosmagnetx/cloudflare-dynamic-certbot
+https://hub.docker.com/repository/docker/chaosmagnetx/cloudflare-dynamic-certbot
+
+
+This docker will
 1) Update every 15 min, your Dynamic DNS addresses at CloudFlare 
 2) Using your Cloudflare authentication Issue and update (checks on startup, and daily at midnight) a LetEncrypt HTTPS certificate
 
@@ -9,13 +14,13 @@ Usage:
 
 Here are some example snippets to help you get started creating a container.
 
-docker docker create
---name=cloudflare-dynamic-certbot
--e email=<cloudflare email address>
--e api=<cloudflare zone id>
--e domain=<the.full.url.com to be updated>
--v /path/to/certs:certs:/etc/letsencrypt
---restart unless-stopped
+docker docker create \
+--name=cloudflare-dynamic-certbot \
+-e email=<cloudflare email address> \
+-e api=<cloudflare zone id> \
+-e domain=<the.full.url.com to be updated> \
+-v /path/to/certs:certs:/etc/letsencrypt \
+--restart unless-stopped \
 chaosmagnetx/cloudflare-dynamic-certbot
 
 docker-compose
