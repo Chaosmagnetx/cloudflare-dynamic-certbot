@@ -12,7 +12,7 @@ Here are some example snippets to help you get started creating a container.
 docker docker create
 --name=cloudflare-dynamic-certbot
 -e email=<cloudflare email address>
--e api=<clooudflare zone id>
+-e api=<cloudflare zone id>
 -e domain=<the.full.url.com to be updated>
 -v /path/to/certs:certs:/etc/letsencrypt
 --restart unless-stopped
