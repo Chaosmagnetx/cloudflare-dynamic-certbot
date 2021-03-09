@@ -1,4 +1,5 @@
 CloudFlare dynamic DNS and LetsEncrypt certificate Updater
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FOshayr%2Fcloudflare-dynamic-certbot%2Fbadge%3Fref%3Dmaster&style=flat)](https://actions-badge.atrox.dev/Oshayr/cloudflare-dynamic-certbot/goto?ref=master)
 
 
 chaosmagnetx/cloudflare-dynamic-certbot
