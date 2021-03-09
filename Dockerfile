@@ -3,7 +3,7 @@ LABEL maintainer="Oshayr <Oshayr@Oshayr.com>"
 LABEL Name="Dockerized Cloudflare Certbot and Dynamic DNS Updater"
 LABEL Version="09.03.21"
 VOLUME /etc/letsencrypt
-RUN apk update && apk add --no-cache --virtual .build-deps gcc libffi-dev openssl-dev musl-dev python3-dev cargo && \
+RUN apk update && apk add --no-cache --virtual .build-deps gcc libffi-dev openssl-dev musl-dev cargo && \
     pip install --no-cache-dir -U pip certbot certbot-dns-cloudflare cloudflare-ddns && \
     apk del .build-deps && rm -rf /var/cache/apk/* && rm -rf /tmp/* && \
     chmod 600 cloudflare.ini>>cloudflare.ini && \
@@ -12,4 +12,3 @@ CMD if [ -z "$email" ] || [ -z "$api" ] || [ -z "$domain" ]; then echo 'Variable
     echo -e "dns_cloudflare_email = $email\ndns_cloudflare_api_key = $api" > cloudflare.ini && \
     certbot certonly --dns-cloudflare --dns-cloudflare-credentials cloudflare.ini -d ${domain#*.},*.${domain#*.} --agree-tos --email $email -n --expand && \
     certbot certificates && cloudflare-ddns -p $email $api $domain && crond  -f -l 0
-
