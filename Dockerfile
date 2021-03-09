@@ -3,7 +3,7 @@ LABEL maintainer="Oshayr <Oshayr@Oshayr.com>"
 LABEL Name="Dockerized Cloudflare Certbot and Dynamic DNS Updater"
 LABEL Version="09.03.21"
 VOLUME /etc/letsencrypt
-RUN apk update && apk add --no-cache --virtual .build-deps gcc libffi-dev openssl-dev musl-dev rustc && \
+RUN apk update && apk add --no-cache --virtual .build-deps gcc libffi-dev openssl-dev musl-dev && \
     pip install --no-cache-dir -U pip certbot certbot-dns-cloudflare cloudflare-ddns && \
     apk del .build-deps && rm -rf /var/cache/apk/* && rm -rf /tmp/* && \
     chmod 600 cloudflare.ini>>cloudflare.ini && \
