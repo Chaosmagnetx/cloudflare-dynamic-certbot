@@ -50,6 +50,3 @@ _All are required_
 
 ## Application Setup
 Will automatically start running - can be monitored by its Log ```docker logs -f dcert```
-
-## License
-MIT
