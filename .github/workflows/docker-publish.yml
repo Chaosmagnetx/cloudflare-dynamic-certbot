@@ -12,17 +12,13 @@ env:
   IMAGE_NAME: dcert
 
 jobs:
-  # See also https://docs.docker.com/docker-hub/builds/
   push:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
-
-      - name: Docker Lint
-        uses: luke142367/Docker-Lint-Action@v1.1.1
-      
+ 
       - name: Update Dockerfiles
         uses: ludeeus/dockerfile-updater@main
         with:
