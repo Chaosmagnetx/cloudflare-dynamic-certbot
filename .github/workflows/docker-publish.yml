@@ -17,11 +17,23 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Docker Lint
+        uses: luke142367/Docker-Lint-Action@v1.1.1
+      
+      - name: Update Dockerfiles
+        uses: ludeeus/dockerfile-updater@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
       - name: Build image
         run: docker build . --file Dockerfile --tag $IMAGE_NAME
+      
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+      
       - name: Push image
         run: |
           IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
