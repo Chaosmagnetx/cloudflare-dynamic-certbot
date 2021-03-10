@@ -38,18 +38,18 @@ services:
 ```
 ## Parameters
 > Container images are configured using parameters passed at runtime (such as those above). These parameters are separated by a colon and indicate external:internal respectively. For example, -p 8080:80 would expose port 80 from inside the container to be accessible from the host's IP on port 8080 outside the container.
+
 _All are required_
+
 | Type | Parameter | Function |
 | ------------- | ------------- | ------------- |
 | environment | email | Your CloudFlare login email address |
 | environment | api | Your cloudflare api - 'Zone ID' - can be found on the domain overview page |
 | environment | domain | The subdomain to be updated (must be a subdomain, or www, cannot be parent domain) |
 | volumes | /etc/letsencrypt | The shared location or volume where the certificates are saved for use by other apps |
+
 ## Application Setup
-Will automatically start running - can be monitored by its Log - docker logs -f dcert
-## Versions
-```20.07.20: - Initial Release.
-21.07.20: - Readme, Github autobuild, comments in DockerFile
-```
+Will automatically start running - can be monitored by its Log ```docker logs -f dcert```
+
 ## License
 MIT
