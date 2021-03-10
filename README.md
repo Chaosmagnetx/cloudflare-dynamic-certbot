@@ -1,9 +1,13 @@
 CloudFlare dynamic DNS and LetsEncrypt certificate Updater
+
+
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FOshayr%2Fcloudflare-dynamic-certbot%2Fbadge%3Fref%3Dmaster&style=flat)](https://actions-badge.atrox.dev/Oshayr/cloudflare-dynamic-certbot/goto?ref=master)
 
 
 chaosmagnetx/cloudflare-dynamic-certbot
+
 https://github.com/Chaosmagnetx/cloudflare-dynamic-certbot
+
 https://hub.docker.com/repository/docker/chaosmagnetx/cloudflare-dynamic-certbot
 
 
@@ -15,6 +19,7 @@ Usage:
 
 Here are some example snippets to help you get started creating a container.
 
+<code>
 docker docker create \
 --name=cloudflare-dynamic-certbot \
 -e email=<cloudflare email address> \
@@ -23,9 +28,13 @@ docker docker create \
 -v /path/to/certs:certs:/etc/letsencrypt \
 --restart unless-stopped \
 chaosmagnetx/cloudflare-dynamic-certbot
-
+	</code>
+	
+	
 docker-compose
 
+
+<code>
 version: "2.1"
 services:
   dcert:
@@ -38,10 +47,11 @@ services:
       - api=<your cloudflare zone id>
       - domain=<the.full.url.com to be updated>
     container_name: dcert
-
+	</code>
 
 
 Parameters
+
 Container images are configured using parameters passed at runtime (such as those above). These parameters are separated by a colon and indicate external:internal respectively. For example, -p 8080:80 would expose port 80 from inside the container to be accessible from the host's IP on port 8080 outside the container.
 
 Parameter	                                            Function
