@@ -18,14 +18,10 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
-
-      - uses: satackey/action-docker-layer-caching@v0.0.11
-      - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag $IMAGE_NAME
-      
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
-      
+      - name: build
+        run: docker build . --file Dockerfile --tag $IMAGE_NAME --cache-from=docker.pkg.github.com/$GITHUB_REPOSITORY/$IMAGE_NAME      
       - name: Push image
         run: |
           IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
